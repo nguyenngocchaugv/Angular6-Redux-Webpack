@@ -1,0 +1,41 @@
+.login {
+    position: absolute;
+    width: 300px;
+    left: calc(50% - 150px);
+    top: calc(50% - 265px);
+    overflow-y: hidden;
+}
+
+.login-header {
+    margin-bottom: 38px;
+}
+
+.login-header__logo {
+    margin-bottom: 18px;
+    height: 20px;
+    width: 126px;
+}
+
+.login__sign-in {
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.login__break {
+    border: 1px dashed gray;
+}
+
+.login__forgot-link {
+    margin-bottom: 50px;
+}
+
+.login-footer {
+    margin-bottom: 50px;
+}
+
+.login-footer__logo {
+    height: 50px;
+}
+.login__register-link {
+    cursor: pointer;
+}

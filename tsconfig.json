@@ -1,23 +1,28 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "./dist",
-    "sourceMap": true,
-    "declaration": false,
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "outDir": "./dist",
+    "declaration": false,
     "typeRoots": [
       "node_modules/@types"
     ],
+    "baseUrl": "src",
     "lib": ["es2016","dom"],
     "types": [
+      "node",
       "webpack"
-    ]
+    ],
+    "allowJs": true
   },
   "compileOnSave": false,
+  "include": [
+    "src/app",
+  ],
   "exclude": [
     "node_modules/*",
     "**/*-aot.ts"

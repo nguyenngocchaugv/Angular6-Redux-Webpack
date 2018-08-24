@@ -1,0 +1,109 @@
+<nav *ngIf="loggedIn$ | async" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">FINSTRO UI</a>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+    </button>
+
+    <div class="collapse navbar-collapse">
+        <form class="form-inline">
+            <input type="text" class="form-control" placeholder="{{ 'Search' | translate }}">
+        </form>
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link">RTL/LTR</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" id="dropdownMail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <ul class="messages dropdown-menu"  aria-labelledby="dropdownMail">
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image"
+                        >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg"
+                            alt="Generic placeholder image"
+                        >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg"
+                            alt="Generic placeholder image"
+                        />
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdownNotification" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownNotification">
+                    <a class="dropdown-item">
+                        Pending Task <span class="badge badge-info">6</span>
+                    </a>
+                    <a class="dropdown-item">
+                        In queue<span class="badge badge-info"> 13</span>
+                    </a>
+                    <a class="dropdown-item">
+                        Mail<span class="badge badge-info"> 45</span>
+                    </a>
+                    <li class="dropdown-divider"></li>
+                    <a class="dropdown-item">
+                        View All
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownLanguages">
+                    <a class="dropdown-item" (click)="changeLang('en')">
+                        English
+                    </a>
+                    <a class="dropdown-item" (click)="changeLang('vn')">
+                        VietNamese
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user"></i> {{ (user$ | async).lastName }} sa sa <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownInfo">
+                    <a class="dropdown-item" >
+                        <i class="fa fa-fw fa-user"></i>Profile
+                    </a>
+                    <a class="dropdown-item" >
+                        <i class="fa fa-fw fa-envelope"></i>Inbox
+                    </a>
+                    <a class="dropdown-item" >
+                        <i class="fa fa-fw fa-gear"></i>Settings
+                    </a>
+                    <a class="dropdown-item" (click)="onLogout()">
+                        <i class="fa fa-fw fa-power-off"></i>Log Out
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

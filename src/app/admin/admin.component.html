@@ -1,0 +1,15 @@
+<app-header></app-header>
+<app-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-sidebar>
+<section class="main-container" [ngClass]="{collapsed: collapedSideBar}">
+    <div class="row">
+        <div class="col-md-12">
+            <main [@fadeInAnimation]="getState(o)">
+                <router-outlet #o="outlet"></router-outlet>
+            </main>
+        </div>
+    </div>
+</section>
+<app-modal id="custom-modal-1" [bodyText]="bodyText"></app-modal>
+<!-- FOOTER -->
+<!-- <app-footer></app-footer> -->
+

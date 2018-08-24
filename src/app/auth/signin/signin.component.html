@@ -1,0 +1,27 @@
+<div class="login">
+    <div class="text-center login-header">
+        <img src="../../../assets/images/mcare.png" class="login-header__logo" />
+        <h4 class="text-bold color--black">{{resource.getString('LOGIN_TITLE')}}</h4>
+    </div>
+    
+    <!-- <div class="alert alert-danger" role="alert" *ngIf="error$ | async">
+        {{error$ | async}}
+    </div> -->
+
+    <login-form 
+        [resource]="resource" 
+        [auth]="auth"
+        [loading]="loading$ | async"
+        (submitted)="onSubmit($event)">
+    </login-form>
+
+    <hr class="login__break">
+
+    <div class="login__forgot-link text-center">
+        <a class="color--gray">{{resource.getString('LOGIN_LABEL_FORGOT_PW')}}</a><br>
+        <a class="login__register-link color--gray" routerLink="/sign-up">{{resource.getString('REGISTER_LABEL')}}</a>
+    </div>
+    <div class="login-footer text-center">
+        <img src="../../../assets/images/logo.png" class="login-footer__logo" />
+    </div>
+</div>

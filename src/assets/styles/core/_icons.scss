@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0');
+    src: url('../fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+    url('../fonts//font-awesome/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+    url('../fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+    url('../fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+    url('../fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/font-material/MaterialIcons-Regular.eot');
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), 
+    url('../fonts/font-material/MaterialIcons-Regular.woff2') format('woff2'), 
+    url('../fonts/font-material/MaterialIcons-Regular.woff') format('woff'), 
+    url('../fonts/font-material/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 2;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    margin-top: -12px !important;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}

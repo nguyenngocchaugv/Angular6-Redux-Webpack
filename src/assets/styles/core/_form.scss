@@ -1,0 +1,24 @@
+form {
+    &.ng-invalid.ng-touched {
+        .form-control {
+            &.ng-invalid.ng-touched {
+                border-color: $red;
+            }
+        }
+
+        input:not([type=range]) {
+            touch-action: manipulation;
+        }
+    }
+}
+
+.ul-invalid {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.invalid-feedback {
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: $red;
+}

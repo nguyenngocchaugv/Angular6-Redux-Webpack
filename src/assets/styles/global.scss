@@ -1,0 +1,37 @@
+/*
+* Core
+*/
+@import 'core/colors';
+@import 'core/icons';
+@import 'core/text-color';
+@import 'core/text';
+@import 'core/border';
+@import 'core/margin';
+@import 'core/global';
+@import 'core/form';
+@import 'core/toastr';
+
+/*
+* Elements
+*/
+
+@import 'elements/checkbox';
+@import 'elements/radio';
+@import 'elements/loading-screen';
+@import 'elements/input';
+@import 'elements/loader';
+
+/*
+* Pages
+*/
+@import 'pages/login';
+@import 'pages/admin-page';
+@import 'pages/menu';
+@import 'pages/sidebar';
+@import 'pages/not-found-page';
+@import 'pages/footer';
+
+/*
+* Font-awesome
+*/
+@import 'font-awesome/font-awesome';
