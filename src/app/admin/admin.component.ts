@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { fadeInAnimation } from '../_animations/fade-in.animation';
-import { AuthStore } from '../models/AuthModel';
+import * as fromStore from 'app/auth/store/auth.reducers';
 import * as fromAuthActions from '../auth/store/auth.actions';
 import { ModalService } from '../services/modal.service';
 
@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
     collapedSideBar: boolean;
     bodyText: string;
 
-    constructor(private store: Store<AuthStore>,
+    constructor(private store: Store<fromStore.AuthStore>,
                 private idle: Idle, 
                 private keepalive: Keepalive,
                 private modalService: ModalService) {
