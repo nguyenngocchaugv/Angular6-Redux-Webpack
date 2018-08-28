@@ -7,17 +7,14 @@ import * as fromRouter from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { RouterStateUrl } from '../utils/Utils';
 import { AppSettings } from '../shared/enums/AppSettings';
-import * as fromAdminReducer from 'app/admin/store/admin.reducers';
 
 export interface State {
     routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
-    // adminState: fromAdminReducer.AdminState;
 }
 
 // ActionReducerMap registers the reducers
 export const reducers: ActionReducerMap<State> = {
-    routerReducer: fromRouter.routerReducer,
-    // adminState: fromAdminReducer.reducer
+    routerReducer: fromRouter.routerReducer
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {

@@ -33,7 +33,6 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers/index';
 import { CustomMaterialModule } from './core/material.module';
-import { AdminModule } from './admin/admin.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
@@ -60,9 +59,10 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
 
         StoreRouterConnectingModule,
-        AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
         
         StoreModule.forRoot(reducers, { metaReducers }),
+        AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
+
         EffectsModule.forRoot([]),
         ToastrModule.forRoot({
             closeButton: true
