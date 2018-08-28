@@ -10,8 +10,8 @@ import { User } from "../../models/UserModel";
  * @class SignInAction
  * @implements {Action}
  */
-export class GetUsersAction implements Action {
-    readonly type: string = AdminActionTypes.GET_USERS;
+export class LoadUsersAction implements Action {
+    readonly type: string = AdminActionTypes.LOAD_USERS;
 
     constructor(public payload?: any) { }
 }
@@ -22,8 +22,8 @@ export class GetUsersAction implements Action {
  * @class SignInAction
  * @implements {Action}
  */
-export class GetUsersSuccessAction implements Action {
-    readonly type: string = AdminActionTypes.GET_USERS_SUCCESS;
+export class LoadUsersSuccessAction implements Action {
+    readonly type: string = AdminActionTypes.LOAD_USERS_SUCCESS;
 
     constructor(public payload: User[]) { }
 }
@@ -35,5 +35,5 @@ export class GetUsersSuccessAction implements Action {
  * @type {Actions}
  */
 export type Actions =
-    GetUsersAction |
-    GetUsersSuccessAction;
+    LoadUsersAction |
+    LoadUsersSuccessAction;

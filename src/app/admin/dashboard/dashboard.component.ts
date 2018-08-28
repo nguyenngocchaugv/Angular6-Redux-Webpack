@@ -20,12 +20,12 @@ export class DashboardComponent implements OnInit {
 	aaaa: Observable<boolean>;
 
 	constructor(private title: Title,
-				private store: Store<fromStore.AdminStore>) { }
+				private store: Store<fromStore.State>) { }
 
 	ngOnInit() {
 		this.title.setTitle(this.pageTitle);
-		this.store.dispatch(new fromAdminActions.GetUsersAction());
-		this.adminState$ = this.store.select(fromAdminReducer.getUsers);
+		this.store.dispatch(new fromAdminActions.LoadUsersAction());
+		this.adminState$ = this.store.select(fromAdminReducer.selectAllUsers);
 		this.aaaa = this.store.select(fromAuthReducer.getLoggedIn);
 	}
 

@@ -27,6 +27,7 @@
     "@ng-idle/core": "6.0.0-beta.3",
     "@ng-idle/keepalive": "6.0.0-beta.3",
     "@ngrx/effects": "6.1.0",
+    "@ngrx/entity": "6.1.0",
     "@ngrx/router-store": "6.1.0",
     "@ngrx/store": "6.1.0",
     "@ngrx/store-devtools": "6.1.0",

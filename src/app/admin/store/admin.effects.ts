@@ -11,12 +11,12 @@ import { AdminService } from "app/services/AdminService";
 export class AdminEffects {
     @Effect()
     getCustomers$ = this.action$
-        .ofType(AdminActionTypes.GET_USERS)
+        .ofType(AdminActionTypes.LOAD_USERS)
         .pipe(switchMap(() => {
             return this.adminService
             .getUsers()
             .pipe(
-                map((users: User[]) => new fromAdminActions.GetUsersSuccessAction(users))
+                map((users: User[]) => new fromAdminActions.LoadUsersSuccessAction(users))
                 );
             })
         );
