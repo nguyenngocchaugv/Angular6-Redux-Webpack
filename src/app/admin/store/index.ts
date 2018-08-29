@@ -1,36 +1,37 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 
 import * as fromRootReducers from '../../store/CoreReducer';
 import * as fromAdminReducers from './admin.reducers';
-
-// export interface State extends fromRootReducers.State {
-//     admin: fromAdminReducers.State; 
-// }
 
 export const reducers = {
     admin: fromAdminReducers.reducer
 };
 // createFeatureSelector() is used to create a feature selector for any specific state.
-export const SelectAdminState = createFeatureSelector<fromAdminReducers.State>('admin');
+export const SelectAdminState = createFeatureSelector<fromAdminReducers.AdminStore>('admin');
+
+export const selectAdminStore = createSelector(
+    SelectAdminState,
+    (state: fromAdminReducers.AdminStore) => state.admin
+)
 
 export const selectUserIds = createSelector(
-    SelectAdminState,
+    selectAdminStore,
     fromAdminReducers.selectUserIds
   );
   export const selectUserEntities = createSelector(
-    SelectAdminState,
+    selectAdminStore,
     fromAdminReducers.selectUserEntities
   );
   export const selectAllUsers = createSelector(
-    SelectAdminState,
+    selectAdminStore,
     fromAdminReducers.selectAllUsers
   );
   export const selectUserTotal = createSelector(
-    SelectAdminState,
+    selectAdminStore,
     fromAdminReducers.selectUserTotal
   );
   export const selectCurrentUserId = createSelector(
-    SelectAdminState,
+    selectAdminStore,
     fromAdminReducers.getSelectedUserId
   );
   

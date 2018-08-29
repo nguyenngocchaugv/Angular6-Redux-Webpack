@@ -11,12 +11,16 @@ export interface State extends EntityState<User> {
     loading: boolean;
 }
 
-const adapter: EntityAdapter<User> = createEntityAdapter<User>();
+export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
 export const initialState: State = adapter.getInitialState({
     selectedUserId: null,
     loading: false
 });
+
+export interface AdminStore {
+    admin: State;
+}
 
 /**
  * Reducer function
