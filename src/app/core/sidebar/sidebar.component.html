@@ -29,11 +29,11 @@
             <span>Component</span>
         </a>
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('pages')">
+            <a class="list-group-item">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>Menu</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'pages'">
+            <li class="nested">
                 <ul class="submenu">
                     <li>
                         <a href="javascript:void(0)">
@@ -66,47 +66,47 @@
         </a>
 
         <div class="header-fields">
-            <a (click)="rltAndLtr()" class="list-group-item">
+            <a class="list-group-item">
                 <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
             </a>
             <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('languages')">
+                <a class="list-group-item">
                     <span><i class="fa fa-language"></i>&nbsp; Language <b class="caret"></b></span>
                 </a>
-                <li class="nested" [class.expand]="showMenu === 'languages'">
+                <li class="nested">
                     <ul class="submenu">
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('en')">
+                            <a href="javascript:void(0)">
                                 English
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('fr')">
+                            <a href="javascript:void(0)">
                                 French
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('ur')">
+                            <a href="javascript:void(0)">
                                 Urdu
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('es')">
+                            <a href="javascript:void(0)">
                                 Spanish
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('it')">
+                            <a href="javascript:void(0)">
                                 Italian
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('fa')">
+                            <a href="javascript:void(0)">
                                 Farsi
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" (click)="changeLang('de')">
+                            <a href="javascript:void(0)">
                                 German
                             </a>
                         </li>
@@ -114,10 +114,10 @@
                 </li>
             </div>
             <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('profile')">
+                <a class="list-group-item">
                     <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
                 </a>
-                <li class="nested" [class.expand]="showMenu === 'profile'">
+                <li class="nested">
                     <ul class="submenu">
                         <li>
                             <a href="javascript:void(0)">
@@ -135,7 +135,7 @@
                             </a>
                         </li>
                         <li>
-                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                            <a [routerLink]="['/login']">
                                 <span><i class="fa fa-fw fa-power-off"></i> Log Out</span>
                             </a>
                         </li>

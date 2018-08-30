@@ -1,115 +1,93 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
 const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
-const SRC_PATH = '../src/app/';
+const webpackMerge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); // Extract text from a bundle, or bundles, into a separate file
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin'); //Easily remove unused Moment.js locales when building with webpack
+const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
-//khai báo các thư viện bỏ vào vendor.js, được cache trên browser 
-const VENDOR_LIBS = [
-    'lodash',
-    'jquery'
-];
+const commonConfig = require('./webpack.config.common.js');
+const helpers = require('./helpers');
 
-const devServer = {
-    port: 4000,
-    open: true
-}
-//hash is calculated for a build - of webpack
-//chunkhash is calculated for chunk (entry file) - of webpack
-//contenthash is special hash generated in ExtractTextPlugin and is calculated by extracted content
+const ENV = 'production';
 
-const config = {
-    //entry: path.resolve(__dirname, SRC_PATH + 'index.js'), // điểm bắt đầu
-    target: 'web',
+// Create multiple instances
+const extractSASS = new ExtractTextPlugin(`content/[name]-sass.[hash].css`);
+const extractCSS = new ExtractTextPlugin(`content/[name].[hash].css`);
+
+module.exports = webpackMerge((commonConfig({env : ENV})), {
     entry: {
-        bundle: path.resolve(__dirname, SRC_PATH + 'index.js'),
-        vendor: VENDOR_LIBS
+        polyfills: './src/polyfills',
+        global: './src/assets/styles/global.scss',
+        main: './src/main'
     },
     output: {
-        filename: '[name].[chunkhash].js', //name='main' . if use vendor name = bundle || vendor
-        path: path.resolve(__dirname, '../dist')
+        path: helpers.root('dist'),
+        filename: 'app/[name].[hash].bundle.js',
+        chunkFilename: 'app/[id].[hash].chunk.js'
     },
     module: {
         rules: [
             {
-                use: 'babel-loader', // sử dụng babel-loader 
-                test: /\.jssd$/, // nhưng file có kết thúc js, $ đại diện cho kết thúc, 
-                //quy tắc này được viết trong / /
-                //x?y => lấy y thay x, trong trường hợp này là lấy empty thay cho x tức
-                exclude: /node_modules/
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/, //Angular Ahead-of-Time Webpack Plugin, Ahead-of-Time (AOT), which compiles your app at build time
+                loader: '@ngtools/webpack'
             },
             {
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: "style-loader"
-                }),
-                test: /(\.css|\.scss)$/
+                test: /\.scss$/,
+                loaders: ['to-string-loader', 'css-loader', 'sass-loader'],
+                exclude: /(vendor\.scss|global\.scss)/
             },
             {
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'images', // tạo thư mục images trong dist
-                            name: '[hash].[ext]'
-                        }
-                    }
-                ],
-                test: /.\jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf$/
+                test: /(vendor\.scss|global\.scss)/,
+                use: extractSASS.extract({
+                    fallback: 'style-loader', //loader(e.g 'style-loader') that should be used when the CSS is not extracted (i.e. in an additional chunk when allChunks: false)
+                    use: ['css-loader', 'postcss-loader', 'sass-loader'], //Loader(s) that should be used for converting the resource to a CSS exporting module (required)
+                    publicPath: '../' //Override the publicPath setting for this loader
+                })
+            },
+            {
+                test: /\.css$/,
+                loaders: ['to-string-loader', 'css-loader'],
+                exclude: /(vendor\.css|global\.css)/
+            },
+            {
+                test: /(vendor\.css|global\.css)/,
+                use: extractCSS.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader'],
+                    publicPath: '../'
+                })
             }
         ]
     },
+    optimization: {
+        runtimeChunk: false, // Each entry chunk embeds runtime.,
+        splitChunks: { // Create a vendors chunk, which includes all code from node_modules in the whole application.
+            cacheGroups: {
+              commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                chunks: 'all'
+              }
+            }
+        }
+    },
     plugins: [
-        //webpack V1 : mỗi lần build chuỗi hash sẽ khác nhau nên phải dùng thêm WebpackMd5Hash : thay đổi nội dung thì hash mới thay đổi
-        //new WebpackMd5Hash(), 
-        //webpack V>1 , cơ chế này đã tích hợp 
-        new ExtractTextPlugin({
-            filename: "[name].[contenthash].css" // ExtractTextPlugin tạo file css nằm ngoài bundle.js, contenthash: sử dụng riêng cho ExtractTextPlugin
+        extractSASS,
+        extractCSS,
+        new MomentLocalesPlugin({
+            localesToKeep: [
+                'en',
+                'vi'
+            ] //An array of locales to keep bundled (other locales would be removed).
         }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, SRC_PATH + 'index.html'), //tạo file index.html trong output config (dist) và import bundle, css tự động
-            filename: 'index.html',
-            minify: {
-                removeComments: true, //xóa comment
-                collapseWhitespace: true, // gôm thành 1 dòng
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true
-            },
+        new AngularCompilerPlugin({
+            mainPath: helpers.root('src/main.ts'), // Optional if entryModule is specified. The main.ts file containing the bootstrap code. The plugin will use AST to determine the entryModule.
+            tsConfigPath: helpers.root('tsconfig-aot.json'), //The path to the tsconfig.json file. This is required. In your tsconfig.json, you can pass options to the Angular Compiler with angularCompilerOptions.
+            sourceMap: true // Optional. Include sourcemaps.
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
-            //with webpack 3.10.0 thì nó cache lại thay đổi, nếu như không có gì thay đổi thì chuỗi chunkhash không đổi
-            //xóa thư mục dist cũng không sao vì đã cache
-            //với webpack cũ thì cần minifest làm chuyện này
-            //name: ['vendor','minifest']
+        new webpack.LoaderOptionsPlugin({ // that it is built for migration from webpack
+            minimize: true, // Where loaders can be switched to minimize mode.
+            debug: false // Whether loaders should be in debug mode or not.
         }),
-        //new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }), //minify , mã hóa file bundle cho gọn nhẹ-không sử dụng khi webpack-dev-server
-        // Eliminate duplicate packages when generating bundle
-        new webpack.optimize.DedupePlugin(),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            // _map: ['lodash', 'map']
-        }),
-        new CompressionPlugin({ //nén thánh file gz
-            asset: "[path].gz[query]",
-            algorithm: "gzip",
-            test: /\.js$|\.css$/,
-            threshold: 10240, //Những file lớn hơn 12240 bytes thì mới nén
-            minRatio: 0.8 //???
-        }),
-        //
-        new webpack.optimize.OccurrenceOrderPlugin()
-    ]
-}
-
-module.exports = config;
+    ],
+    mode: 'production'
+});

@@ -28,3 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Ngrx/store-selector
 https://github.com/ngrx/platform/blob/master/docs/store/selectors.md
+
+## Angular AOT 
+[Link](https://angular.io/guide/aot-compiler)

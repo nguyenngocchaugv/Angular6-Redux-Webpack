@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Auth, AuthStore } from '../../models/AuthModel';
-import RS from '../../shared/resources/ResourceManager';
+import * as fromAuthStore from 'app/auth/store/auth.reducers';
 import * as fromAuthActions from '../store/auth.actions';
 import * as fromAuthReducers from '../store/index';
 
@@ -24,7 +23,7 @@ export class SignupComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private store: Store<AuthStore>) { }
+        private store: Store<fromAuthStore.AuthStore>) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({

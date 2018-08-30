@@ -3,10 +3,10 @@ const webpackMerge = require('webpack-merge');
 const writeFilePlugin = require('write-file-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
-const path = require('path');
 
 const commonConfig = require('./webpack.config.common.js');
 const helpers = require('./helpers');
+const path = require('path');
 
 const ENV = 'development';
 

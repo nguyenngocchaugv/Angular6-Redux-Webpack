@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const MergeJsonWebpackPlugin = require("merge-jsons-webpack-plugin");
@@ -43,15 +42,14 @@ module.exports = (options) => ({
         ]
     },
     plugins: [
-        // new webpack.DefinePlugin({
-        //     'process.env': {
-        //         NODE_ENV: `'${options.env}'`,
-        //         BUILD_TIMESTAMP: `'${new Date().getTime()}'`,
-        //         // VERSION: `'${utils.parseVersion()}'`,
-        //         DEBUG_INFO_ENABLED: options.env === 'development',
-        //         SERVER_API_URL: `''`
-        //     }
-        // }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: `'${options.env}'`,
+                BUILD_TIMESTAMP: `'${new Date().getTime()}'`,
+                VERSION: `'${helpers.parseVersion()}'`,
+                DEBUG_INFO_ENABLED: options.env === 'development',
+            }
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
