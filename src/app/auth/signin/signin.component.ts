@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
     error$: Observable<any>;
     loading$: Observable<boolean>;
 
-    constructor(private store: Store<fromStore.AuthState>,
+    constructor(private store: Store<fromStore.AuthStore>,
                 private router: Router) { }
 
     ngOnInit() {

@@ -11,6 +11,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent, data: { state: 'dashboard'} },
+            // { path: ':id', component: DashboardComponent },
             { path: 'setting', component: SettingComponent, data: { state: 'setting'} }
         ]
     }

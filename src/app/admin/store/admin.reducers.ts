@@ -35,7 +35,7 @@ export function reducer(state: any = initialState, action: Actions): State {
             return adapter.addOne(action.payload.user, state);
         }
 
-        case AdminActionTypes.UPDATE_USER: {
+        case AdminActionTypes.UPDATE_USER_SUCCESS: {
             return adapter.updateOne(action.payload.user, state);
         }
     

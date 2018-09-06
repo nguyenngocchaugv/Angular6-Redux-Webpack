@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
                 private modalService: ModalService) {
                     
          // sets an idle timeout of 5 seconds, for testing purposes.
-        idle.setIdle(15);
+        idle.setIdle(300);
         // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
         idle.setTimeout(15);
         // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document

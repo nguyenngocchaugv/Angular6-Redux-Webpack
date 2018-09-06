@@ -6,6 +6,7 @@ export const AdminActionTypes = {
     ADD_USER_SUCCESS: type('[admin] Add User Success'),
     UPDATE_USER: type('[admin] Update User'),
     UPDATE_USER_SUCCESS: type('[admin] Update User Success'),
+    UPDATE_USER_FAIL: type('[admin] Update User Fail'),
     DELETE_USER: type('[admin] Delete User'),
     DELETE_USER_SUCCESS: type('[admin] Delete User Success'),
 
