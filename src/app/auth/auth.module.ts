@@ -28,7 +28,7 @@ const COMPONENTS = [
         RouterModule,
         
         CoreModule,
-        StoreModule.forFeature('auth', reducers),
+        StoreModule.forFeature('auth', reducers), // The forFeature(...) method merges an object to the root state
         EffectsModule.forFeature([AuthEffects])
 
     ],

@@ -5,7 +5,6 @@ import { AuthGuardService } from './services/AuthGuardService';
 import { NotFoundPageComponent } from './components/not-found/not-found-page.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
     {

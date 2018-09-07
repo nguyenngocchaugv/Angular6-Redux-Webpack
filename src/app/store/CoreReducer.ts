@@ -3,13 +3,14 @@ import {
     ActionReducer,
     MetaReducer
 } from '@ngrx/store';
+import { RouterStateSnapshot } from '@angular/router';
+
 import * as fromRouter from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { RouterStateUrl } from '../utils/Utils';
 import { AppSettings } from '../shared/enums/AppSettings';
 
 export interface State {
-    routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
+    routerReducer: fromRouter.RouterReducerState<RouterStateSnapshot>;
 }
 
 // ActionReducerMap registers the reducers
