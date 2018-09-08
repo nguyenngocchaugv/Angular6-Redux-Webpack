@@ -22,12 +22,6 @@ export interface AuthState {
     loading: boolean;
 }
 
-
-
-export interface AuthStore {
-    auth: AuthState;
-}
-
 export const initialState: AuthState = {
     loggedIn: false,
     user: null,

@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "app/models/UserModel";
-import { ThrowStmt } from "@angular/compiler";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()

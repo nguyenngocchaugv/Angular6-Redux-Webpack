@@ -61,9 +61,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         StoreRouterConnectingModule,
         
         StoreModule.forRoot(reducers, { metaReducers }),
+        EffectsModule.forRoot([]),
         AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
 
-        EffectsModule.forRoot([]),
         ToastrModule.forRoot({
             closeButton: true
         }),
@@ -72,7 +72,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         NgIdleKeepaliveModule.forRoot(),
 
         AppRoutingModule,
-        CoreModule.forRoot(),
+        CoreModule,
         AuthModule.forRoot(),
         CustomMaterialModule
     ],

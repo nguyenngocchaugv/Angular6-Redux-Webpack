@@ -1,7 +1,7 @@
 import { Effect, Actions } from "@ngrx/effects";
 import { Injectable } from "@angular/core";
 import { map, switchMap, catchError } from 'rxjs/operators';
-import { of } from "rxjs";
+import { of } from 'rxjs/observable/of';
 
 import { AdminActionTypes } from '../../shared/constants/AdminActionTypes';
 import * as fromAdminActions from './admin.actions';

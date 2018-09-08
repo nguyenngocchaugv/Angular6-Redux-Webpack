@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
     collapedSideBar: boolean;
     bodyText: string;
 
-    constructor(private store: Store<fromStore.AuthStore>,
+    constructor(private store: Store<fromStore.AuthState>,
                 private idle: Idle, 
                 private keepalive: Keepalive,
                 private modalService: ModalService) {

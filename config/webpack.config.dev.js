@@ -25,7 +25,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         main: './src/main'
     },  
     output: {
-        path: helpers.root('dist'),
+        // path: helpers.root('dist'),
         filename: 'app/[name].bundle.js',
         chunkFilename: 'app/[id].chunk.js',
         hotUpdateChunkFilename: 'hot/hot-update.js',

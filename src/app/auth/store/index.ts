@@ -3,19 +3,24 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRootReducers from '../../store/CoreReducer';
 import * as fromAuthReducers from './auth.reducers';
 
+
+export interface AuthState {
+    auth: fromAuthReducers.AuthState;
+}
+
 export interface State extends fromRootReducers.State {
-    auth: fromAuthReducers.AuthStore;
+    auth: AuthState;
 }
 
 export const reducers = {
     auth: fromAuthReducers.reducer
 };
 
-export const selectAuthReducer = createFeatureSelector<fromAuthReducers.AuthStore>('auth');
+export const selectAuthReducer = createFeatureSelector<AuthState>('auth');
 
 export const selectAuthStore = createSelector(
     selectAuthReducer,
-    (state: fromAuthReducers.AuthStore) => state.auth
+    (state: AuthState) => state.auth
 );
 
 export const getLoggedIn = createSelector(

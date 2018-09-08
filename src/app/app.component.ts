@@ -16,12 +16,12 @@ export class AppComponent {
     loggedIn$: Observable<boolean>;
     loading = true;
 
-    constructor(private store: Store<fromStore.AuthStore>,
+    constructor(private store: Store<fromStore.AuthState>,
                 private router: Router) {
-        this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
-        this.router.events.subscribe((event: RouterEvent) => {
-            this.navigationInterceptor(event);
-        });
+        // this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
+        // this.router.events.subscribe((event: RouterEvent) => {
+        //     this.navigationInterceptor(event);
+        // });
         if (localStorage.getItem('currentUser')) {
             let currentUser = JSON.parse(localStorage.getItem('currentUser'));
             this.store.dispatch(new fromAuthActions.SetStateSignInAction(currentUser));
@@ -31,22 +31,22 @@ export class AppComponent {
     ngOnInit() {
     }
     
-    // Shows and hides the loading spinner during RouterEvent changes
-    navigationInterceptor(event: RouterEvent): void {
-        if (event instanceof NavigationStart) {
-            this.loading = true;
-        }
-        if (event instanceof NavigationEnd) {
-            this.loading = false;
-        }
+    // // Shows and hides the loading spinner during RouterEvent changes
+    // navigationInterceptor(event: RouterEvent): void {
+    //     if (event instanceof NavigationStart) {
+    //         this.loading = true;
+    //     }
+    //     if (event instanceof NavigationEnd) {
+    //         this.loading = false;
+    //     }
 
-        // Set loading state to false in both of the below events to hide the spinner in case a request fails
-        if (event instanceof NavigationCancel) {
-            this.loading = false;
-        }
-        if (event instanceof NavigationError) {
-            this.loading = false;
-        }
-    }
+    //     // Set loading state to false in both of the below events to hide the spinner in case a request fails
+    //     if (event instanceof NavigationCancel) {
+    //         this.loading = false;
+    //     }
+    //     if (event instanceof NavigationError) {
+    //         this.loading = false;
+    //     }
+    // }
 }
 
