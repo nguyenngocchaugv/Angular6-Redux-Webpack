@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
-	{
+ 	{
         path: '',
         component: AdminComponent,
         children: [

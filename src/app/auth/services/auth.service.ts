@@ -5,8 +5,8 @@ import { _throw } from "rxjs/observable/throw";
 import { of } from "rxjs/observable/of";
 import { HttpClient } from '@angular/common/http';
 
-import {BaseService} from "./BaseService";
-import { Auth } from '../models/AuthModel';
+import {BaseService} from "../../services/BaseService";
+import { Auth } from '../models/auth.model';
 
 @Injectable()
 export class AuthService {

@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import * as fromStore  from '../store/index';
 import * as fromAdminReducer from '../store/admin.reducers';
 import * as fromAdminActions from '../store/admin.actions';
-import { User } from '../../models/UserModel';
+import { User } from '../models/user.model';
 
 import * as fromAuthReducer from 'app/auth/store/index';
 

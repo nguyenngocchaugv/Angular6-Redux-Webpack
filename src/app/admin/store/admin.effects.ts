@@ -5,8 +5,8 @@ import { of } from 'rxjs/observable/of';
 
 import { AdminActionTypes } from '../../shared/constants/AdminActionTypes';
 import * as fromAdminActions from './admin.actions';
-import { User } from "../../models/UserModel";
-import { AdminService } from "app/services/AdminService";
+import { User } from "../models/user.model";
+import { AdminService } from "../services/admin.service";
 
 @Injectable()
 export class AdminEffects {

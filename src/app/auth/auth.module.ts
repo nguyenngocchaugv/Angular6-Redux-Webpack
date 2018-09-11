@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 
-import { AuthService } from '../services/AuthService';
+import { AuthService } from './services/auth.service';
 import { AuthEffects } from './store/auth.effects';
 import { SigninComponent } from './signin/signin.component';
 import { LoginFormComponent } from './signin/login-form/login-form.component';

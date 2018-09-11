@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import * as fromAuthReducers from '../../auth/store/index';
 import * as fromAuthActions from '../../auth/store/auth.actions';
 import * as fromAuthStore from 'app/auth/store/auth.reducers';
-import { Auth } from '../../models/AuthModel';
+import { Auth } from '../../auth/models/auth.model';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,7 +19,7 @@ export class HeaderComponent   {
     user$: Observable<Auth>;
     pushRightClass: string = 'push-right';
     
-    constructor(private store: Store<fromAuthStore.AuthStore>,
+    constructor(private store: Store<fromAuthStore.AuthState>,
                 private translate: TranslateService) {
         this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
         

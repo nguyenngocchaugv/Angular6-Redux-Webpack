@@ -1,8 +1,8 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 
-import { AdminActionTypes } from "../../shared/constants/AdminActionTypes";
-import { User } from "../../models/UserModel";
+import { AdminActionTypes } from '../../shared/constants/AdminActionTypes';
+import { User } from '../models/user.model';
 
 export class LoadUsersAction implements Action {
     readonly type: string = AdminActionTypes.LOAD_USERS;

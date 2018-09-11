@@ -14,7 +14,7 @@ import { InputPatternValidatorDirective } from '../shared/directives/InputPatter
 import { PassWordPatternValidatorDirective } from '../shared/directives/PasswordValidatorDirective';
 
 // import another modules
-import { CustomMaterialModule } from './material.module';
+import { CustomMaterialModule } from '../material/material.module';
 
 import { BaseService } from "../services/BaseService";
 import { ApiHelpers } from "../utils/ApiHelpers";

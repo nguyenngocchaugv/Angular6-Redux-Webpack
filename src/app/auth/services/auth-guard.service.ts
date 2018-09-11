@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as Auth from '../auth/store/auth.actions';
-import * as fromAuth from '../auth/store/index';
-import * as fromAuthActions from '../auth/store/auth.actions';
+import * as Auth from '../store/auth.actions';
+import * as fromAuth from '../store';
 
 
 @Injectable()

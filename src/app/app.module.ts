@@ -18,7 +18,7 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './store/CoreReducer';
+import { reducers, metaReducers } from './store/app.reducers';
 import { CustomRouterStateSerializer } from './utils/Utils';
 
 // import settings
@@ -32,7 +32,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers/index';
-import { CustomMaterialModule } from './core/material.module';
+import { CustomMaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories

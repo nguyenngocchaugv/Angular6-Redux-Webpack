@@ -20,10 +20,14 @@ export const reducers: ActionReducerMap<State> = {
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
     return function (state: State, action: any): State {
-        console.log('state', state);
+        const result = reducer(state, action);
+        console.groupCollapsed(action.type);
+        console.log('prev state', state);
         console.log('action', action);
-
-        return reducer(state, action);
+        console.log('next state', result);
+        console.groupEnd();
+    
+        return result;
     };
 }
 

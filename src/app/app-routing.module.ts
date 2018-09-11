@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { AuthGuardService } from './services/AuthGuardService';
+import { AuthGuardService } from './auth/services/auth-guard.service';
 import { NotFoundPageComponent } from './components/not-found/not-found-page.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';

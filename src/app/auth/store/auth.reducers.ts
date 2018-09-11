@@ -6,7 +6,7 @@ import { Actions } from '../../auth/store/auth.actions';
 
 // import auth action type
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
-import { Auth } from 'app/models/AuthModel';
+import { Auth } from '../models/auth.model';
 
 
 

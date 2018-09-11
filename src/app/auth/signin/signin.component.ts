@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
-import { Auth, initialAuth } from '../../models/AuthModel';
+import { Auth, initialAuth } from '../models/auth.model';
 
 import RS from '../../shared/resources/ResourceManager';
 import * as fromAuthActions from '../store/auth.actions';

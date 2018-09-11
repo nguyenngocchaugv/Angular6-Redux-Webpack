@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
-import { Auth } from '../../../models/AuthModel';
+import { Auth } from '../../models/auth.model';
 
 @Component({
     selector: 'login-form',

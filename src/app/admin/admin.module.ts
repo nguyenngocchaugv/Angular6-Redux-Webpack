@@ -14,7 +14,7 @@ import { ModalService } from '../services/modal.service';
 import { ModalComponent } from '../shared/directives/modal-dialog/modal.component';
 import { reducers } from './store/index';
 import { AdminEffects } from './store/admin.effects';
-import { AdminService } from 'app/services/AdminService';
+import { AdminService } from './services/admin.service';
 
 @NgModule({
     imports: [

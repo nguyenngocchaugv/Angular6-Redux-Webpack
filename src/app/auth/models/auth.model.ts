@@ -1,4 +1,4 @@
-import { User } from '../models/UserModel';
+import { User } from '../../admin/models/user.model';
 
 export interface Auth {
     id: number;

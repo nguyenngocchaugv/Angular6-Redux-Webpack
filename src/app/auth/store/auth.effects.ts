@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs/observable/of';
 import { map, tap, catchError, exhaustMap, switchMap, mergeMap} from 'rxjs/operators';
 
-import { AuthService } from '../../services/AuthService';
+import { AuthService } from '../services/auth.service';
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
 import * as fromAuthActions from './auth.actions';
 
@@ -18,7 +18,7 @@ import {
     SignInErrorAction,
     SignInRedirectAction
 } from './auth.actions';
-import { Auth } from '../../models/AuthModel';
+import { Auth } from '../models/auth.model';
 
 @Injectable()
 export class AuthEffects {

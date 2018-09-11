@@ -3,7 +3,7 @@ import { createEntityAdapter, EntityState, EntityAdapter } from '@ngrx/entity'
 
 // import auth action type
 import { AdminActionTypes } from '../../shared/constants/AdminActionTypes';
-import { User } from '../../models/UserModel';
+import { User } from '../models/user.model';
 import { Actions } from './admin.actions';
 
 export interface State extends EntityState<User> {
